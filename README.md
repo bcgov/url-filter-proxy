@@ -1,5 +1,7 @@
 # url-filter-proxy
 
+## Getting Started
+
 ```
 docker build --tag url_filter_proxy .
 
