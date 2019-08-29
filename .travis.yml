@@ -1,16 +1,17 @@
 language: node_js
-
 services:
-  - docker
-
+- docker
 jobs:
   include:
-    - stage: deploy
-      install:
-      - docker build -t ikethecoder/url-filter-proxy .
-      provider: script
-      script: bash docker_push || travis_terminate 1
-      on:
-        all_branches: true
-        condition: "$TRAVIS_BRANCH =~ ^master|develop$ || -n $TRAVIS_TAG"  
-
+  - stage: deploy
+    install:
+    - docker build -t ikethecoder/url-filter-proxy .
+    provider: script
+    script: bash docker_push || travis_terminate 1
+    on:
+      all_branches: true
+      condition: "$TRAVIS_BRANCH =~ ^master|develop$ || -n $TRAVIS_TAG"
+env:
+  global:
+  - secure: UpZQCMx0Q3RlOCdpShsV7ZhYXfmzAiqUo2kXIcMpsc3SiwB9iAG4cEXwmYnzIgJKx0tl88ki+egZRgWFEPysui0jN5Rn31XbHQYHox8tS/epJRfJDRbm8c1J7LIAfwqC5i8gx6avM7bMakNlZoXrjEPRv01xTcgzo3ychL0V2r4GW1NIkaSiarDqFadMOYb6X4AHPh6+Vsc/LTvAeKhlfAONIKktiWwkuJkakF7FT8H2bN06GPyGa4KfhaDGMouTlGFvtn5riaWAF1Spfybg0LOAqaZxrkULajh6s6pWgGd7Tz8+tYvLMX1Jxcfgf7c0J7PIaTGKHMintv8GWug6vVQKLcKH9v0aQkIBorM5y5G23yughJHWpkltWcXnoPKoAvvD7gZgezhHZ5EIIJxzYOwi6gYVWXeNWdn0jqpFJzzv385GCqcIOCFXaqHHtkAu6ASbmtYJgRLA1uyHRARFy+UIq9oSN2g9COefuFqWpTNnT4QWJOUcXAhtWHjYvRyHlhpwaONFk0pIqJeGyDZZWWrVH7FZff79njR+xHp197Rv/dV1JGJFsg0PzwSHUJVxTXoPjwpzbvEwrSQHGGByMnnQlLUdwTx7PZXYyjSyQIXlZK6004ZJztB7D+ZAGJbYlLjcwvfbWptL22c1x1emO4sN54PBt8g0Sqk5ZbG2mYo=
+  - secure: gcVXy5HTIz2m+5YM6MU6K7VIdH/QsPTYIlholeugjQ+qscOMMrOyuDDi9IEzhcgjby9U3DKf0CggeQj3Al80Uuyqu+K8F2P9NgjJavxpdBK80iGl+sM9T1On1IptXPneOutwcXVCg1CURhGvJGN8UPlp0JqFfImAne56kK1xYo6EeLjHLk7VDX9it0a0L4MhVIZp6lT8+6GlcFIIFDyRTRO7lJ5FZMhcj5ZszHsnoq1X8zLBu/ykzIsMmlvlsgrtL9eGvBihV9Q2xW55o5JykDpnn4qCRo6U/14Vwvbxw7ZNgV8HIWS0Wp8ReDM6GUWJGIGNF+fY6QhWu07n6lz0Tb5gj/Im5mYCxXS0LxvAEON80wx/d2QCBbk5GuTeiTSaYmT44kXz2pl2Kr+vqGYxn7edCl5Ca6LN+7q0C1JTaDYe5jolEEbdEaj/xd+g56dnzixNjrm61hxaprrOXUKzJuNdYR27RtxwwDEbeR6WGnDKXfcwDTm7bUJYc/osqfa3W9hydEyLZpvAgArRG4zhC4SeUgS6sLQIB3+buWuNY37MtdPYFAhSSDC0o54Kfa0R8be+p5GwmUSdtOaRkDgOv6iDV+fdxVHhyqGBMLQKmlYX4sZ5zuvTgDYEvL8slgzHyAxzd30WFMXc2qzfMFd2yejxR6hyAkKuZ/qFE3/KYvA=
